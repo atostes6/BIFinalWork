@@ -1,0 +1,26 @@
+SELECT product.product_id, product_category.product_category_id
+FROM product, product_category
+WHERE product_category.category_id = product.category_id;
+
+-- join order details and order items
+select order_details.order_details_id, customer_id, distribution_channel_id, order_put_channel_id, payment_details_id, total_value, product_id, quantity
+from order_details, order_items
+where order_items.order_details_id=order_details.order_details_id
+order by order_details.order_details_id
+
+-- join supplier and product and order items
+select product.product_id, product.category_id, product.supplier_id, product.product_name, product.product_description, product.product_sku, supplier.supplier_name
+from product, supplier
+where product.supplier_id=supplier.supplier_id
+
+select from order_details, order_itens, supplier, product
+where product.product_id = supplier.product_id and order_details.order_details = order_items.order_details_id and 
+
+select customer_id, distribution_channel_id, order_put_channel_id, payment_details_id, total_value, product_id, quantity from order_details, order_items
+where order_details.order_details_id = order_items.order_details_id 
+order by customer_id ASC
+
+select supplier.supplier_id, supplier_name, product_id, category_id, product_name, product_description, product_sku, product_price 
+from supplier, product
+where supplier.supplier_id = product.supplier_id
+order by supplier_id, product_id ASC;
